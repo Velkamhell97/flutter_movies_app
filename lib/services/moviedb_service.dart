@@ -12,13 +12,13 @@ class MoviedbService {
   int _popularPage = 0;
   int _topRankedPage = 0;
 
-  Movie? activeMovie;
-
-  Map<int, List<Actor>> moviesCast = {};
+  Map<int, List<Actor>> castCache = {};
 
   Future<dynamic> _fetchResponse(String endpoint, [int page = 1]) async {
     final url = Uri.https(_urlBase, endpoint, {'api_key': _apiKey, 'language': _language, 'page': '$page'});
+    
     final response = await http.get(url);
+    
     return json.decode(response.body);
   }
 
@@ -51,14 +51,14 @@ class MoviedbService {
   }
 
   Future<List<Actor>> fetchMovieCast(int movieId) async {
-    if (moviesCast.containsKey(movieId)) {
-      return moviesCast[movieId]!;
+    if (castCache.containsKey(movieId)) {
+      return castCache[movieId]!;
     }
 
     final jsonData = await _fetchResponse('3/movie/$movieId/credits');
     final creditsResponse = CreditResponse.fromJson(jsonData);
 
-    moviesCast[movieId] = creditsResponse.cast;
+    castCache[movieId] = creditsResponse.cast;
 
     return creditsResponse.cast;
   }

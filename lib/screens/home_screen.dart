@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:peliculas_app/models/movies_state.dart';
 import 'package:provider/provider.dart';
 
-import 'package:peliculas_app/providers/movie_provider.dart';
-import 'package:peliculas_app/search/search_delegate.dart';
-
-import 'package:peliculas_app/widgets/widgets.dart';
+import '../providers/movie_provider.dart';
+import '../search/search_delegate.dart';
+import '../widgets/widgets.dart';
+import '../models/models.dart';
 
 class HomeScreen extends StatelessWidget {
 

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'package:peliculas_app/models/models.dart';
-import 'package:peliculas_app/providers/movie_provider.dart';
+import '../models/models.dart';
+import '../providers/movie_provider.dart';
 
 class MovieSearchDelegate extends SearchDelegate {
   final MovieProvier _movieProvier;
@@ -130,9 +130,7 @@ class _MovieItem extends StatelessWidget {
       ),
       title: Text(movie.title),
       subtitle: Text(movie.originalTitle),
-      onTap: (){
-        Navigator.pushNamed(context, 'detail', arguments: movie);
-      },
+      onTap: () => Navigator.pushNamed(context, 'detail', arguments: movie),
     );
   }
 }

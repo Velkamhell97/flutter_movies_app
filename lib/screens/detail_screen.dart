@@ -1,35 +1,29 @@
 import 'package:flutter/material.dart';
 
-import 'package:peliculas_app/models/models.dart';
-import 'package:peliculas_app/widgets/widgets.dart';
+import '../models/models.dart';
+import '../widgets/widgets.dart';
 
 class DetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Movie movie = ModalRoute.of(context)?.settings.arguments as Movie;
 
-    return WillPopScope(
-      onWillPop: () async {
-        // await Future.delayed(const Duration(milliseconds: 500));
-        return true;
-      },
-      child: Scaffold(
-        body: CustomScrollView(
-          slivers: [
-            _CustomAppBar(movie: movie),
-            SliverPadding(
-              padding: const EdgeInsets.symmetric(vertical: 10.0),
-              sliver: SliverList(
-                delegate: SliverChildListDelegate([
-                  _PosterAndTitle(movie: movie),
-                  _OverView(movie: movie),
-                  _OverView(movie: movie),
-                  CastingCards(movieId: movie.id)
-                ]),
-              ),
-            )
-          ],
-        ),
+    return Scaffold(
+      body: CustomScrollView(
+        slivers: [
+          _CustomAppBar(movie: movie),
+          SliverPadding(
+            padding: const EdgeInsets.symmetric(vertical: 10.0),
+            sliver: SliverList(
+              delegate: SliverChildListDelegate([
+                _PosterAndTitle(movie: movie),
+                _OverView(movie: movie),
+                _OverView(movie: movie),
+                CastingCards(movieId: movie.id)
+              ]),
+            ),
+          )
+        ],
       ),
     );
   }
@@ -48,16 +42,6 @@ class _CustomAppBar extends StatelessWidget {
       expandedHeight: size.height * 0.3,
       floating: false,
       pinned: true,
-      automaticallyImplyLeading: false,
-      //?-Al parecer importante para evitar el daño del hero al volver
-      leading: BackButton(
-        onPressed: () {
-          Navigator.of(context).maybePop(movie.heroId);
-          // Future.delayed(const Duration(milliseconds: 500), () {
-          //   Navigator.of(context).maybePop(movie.heroId);
-          // });
-        },
-      ),
       flexibleSpace: FlexibleSpaceBar(
         centerTitle: true,
         title: Text(movie.title, textAlign: TextAlign.center),
