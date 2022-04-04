@@ -1,22 +1,22 @@
 import 'dart:convert';
 
 class Actor {
-  bool adult;
-  int gender;
-  int id;
-  String knownForDepartment;
-  String name;
-  String originalName;
-  double popularity;
-  String? profilePath;
-  int? castId;
-  String? character;
-  String creditId;
-  int? order;
-  String? department;
-  String? job;
+  final bool adult;
+  final int gender;
+  final int id;
+  final String knownForDepartment;
+  final String name;
+  final String originalName;
+  final double popularity;
+  final String? profilePath;
+  final int? castId;
+  final String? character;
+  final String creditId;
+  final int? order;
+  final String? department;
+  final String? job;
 
-  Actor({
+  const Actor({
     required this.adult,
     required this.gender,
     required this.id,

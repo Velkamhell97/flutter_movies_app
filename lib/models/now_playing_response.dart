@@ -1,13 +1,13 @@
 import 'package:peliculas_app/models/models.dart';
 
 class NowPlayingResponse {
-  Dates dates;
-  int page;
-  List<Movie> results;
-  int totalPages;
-  int totalResults;
+  final Dates dates;
+  final int page;
+  final List<Movie> results;
+  final int totalPages;
+  final int totalResults;
 
-  NowPlayingResponse({
+  const NowPlayingResponse({
     required this.dates,
     required this.page,
     required this.results,
@@ -25,10 +25,10 @@ class NowPlayingResponse {
 }
 
 class Dates {
-  DateTime maximum;
-  DateTime minimum;
+  final DateTime maximum;
+  final DateTime minimum;
 
-  Dates({
+  const Dates({
     required this.maximum,
     required this.minimum,
   });

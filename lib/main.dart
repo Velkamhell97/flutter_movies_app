@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:peliculas_app/services/moviedb_service.dart';
 import 'package:provider/provider.dart';
 
+import 'package:peliculas_app/services/moviedb_service.dart';
 import 'package:peliculas_app/providers/movie_provider.dart';
 import 'package:peliculas_app/screens/screens.dart';
  
