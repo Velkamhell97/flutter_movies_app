@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Modify this file to customize your launch splash screen -->
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Por si el color de fondo es un hexadecimal diferente a los por defecto en  @android:color -->
+    <!-- <item android:drawable="@drawable/bg_color" /> -->
     <item android:drawable="@android:color/black" />
 
-    <!-- You can insert your own image assets here -->
+    <!-- Las dimensiones del slpash son variadas, lo importante esque la imagen este centrada y sea de
+    fondo transparente en un video la imagen era de 1200x1200, generalmente se hace con Adobe -->
     <item>
         <bitmap
             android:gravity="center"

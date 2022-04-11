@@ -1,16 +1,12 @@
-import 'dart:convert';
-
 import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 import '../models/models.dart';
 
 class MoviedbService {
-  String _apiKey = 'f16776151abea9d2874e39255731fc60';
-  String _urlBase = 'api.themoviedb.org';
-  String _language = 'es-ES';
-
-  int _popularPage = 0;
-  int _topRankedPage = 0;
+  static const _apiKey = 'f16776151abea9d2874e39255731fc60';
+  static const _urlBase = 'api.themoviedb.org';
+  static const _language = 'es-ES';
 
   Map<int, List<Actor>> castCache = {};
 
@@ -22,33 +18,33 @@ class MoviedbService {
     return json.decode(response.body);
   }
 
+
   Future<List<Movie>> fetchRecentMovies() async {
     final jsonData = await _fetchResponse('3/movie/now_playing');
 
-    final nowPlayingResponse = NowPlayingResponse.fromJson(jsonData);
+    final nowPlayingResponse = MoviesResponse.fromJson(jsonData, 'now_playing');
 
     return nowPlayingResponse.results;
   }
 
-  Future<List<Movie>> fetchPopularMovies() async {
-    _popularPage++;
 
-    final jsonData = await _fetchResponse('3/movie/popular', _popularPage);
+  Future<List<Movie>> fetchPopularMovies(int page) async {
+    final jsonData = await _fetchResponse('3/movie/popular', page);
 
-    final popularResponse = PopularResponse.fromJson(jsonData);
+    final popularResponse = MoviesResponse.fromJson(jsonData, 'popular');
 
     return popularResponse.results;
   }
 
-  Future<List<Movie>> fetchTopRankedMovies() async {
-    _topRankedPage++;
 
-    final jsonData = await _fetchResponse('3/movie/top_rated', _topRankedPage);
+  Future<List<Movie>> fetchTopRankedMovies(int page) async {
+    final jsonData = await _fetchResponse('3/movie/top_rated', page);
 
-    final topRankedResponse = TopRankedResponse.fromJson(jsonData);
+    final topRankedResponse = MoviesResponse.fromJson(jsonData, 'top_ranked');
 
     return topRankedResponse.results;
   }
+
 
   Future<List<Actor>> fetchMovieCast(int movieId) async {
     if (castCache.containsKey(movieId)) {
@@ -63,12 +59,13 @@ class MoviedbService {
     return creditsResponse.cast;
   }
 
+
   Future<List<Movie>> fetchMovieByQuery(String query) async {
-    final url = Uri.https(_urlBase, '3/search/movie', {'api_key': _apiKey, 'language': _language, 'query': '$query'});
+    final url = Uri.https(_urlBase, '3/search/movie', {'api_key': _apiKey, 'language': _language, 'query': query});
 
     final jsonData = await http.get(url);
     
-    final searchResponse = SearchMovieResponse.fromJson(json.decode(jsonData.body));
+    final searchResponse = MoviesResponse.fromJson(json.decode(jsonData.body), 'search');
 
     return searchResponse.results;
   }

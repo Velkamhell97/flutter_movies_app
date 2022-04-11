@@ -1,35 +1,41 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'package:peliculas_app/models/models.dart';
-import 'package:peliculas_app/providers/movie_provider.dart';
+import '../models/models.dart';
+import '../providers/movie_provider.dart';
 
 class CastingCards extends StatelessWidget {
   final double cardWidth;
   final double cardHeight;
   final int movieId;
 
-  CastingCards({this.cardWidth = 130, this.cardHeight = 180, required this.movieId});
+  const CastingCards({
+    Key? key,
+    this.cardWidth = 130, 
+    this.cardHeight = 180, 
+    required this.movieId
+  }) : super(key: key);
 
   static const _cardGap = 7.0;
 
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<List<Actor>>(
-      initialData: [],
-      future: context.read<MovieProvier>().getMovieCast(movieId),
+      initialData: const [],
+      future: context.read<MovieProvider>().getMovieCast(movieId),
       builder: (_, AsyncSnapshot<List<Actor>> snapshot) {
         if(snapshot.hasError){
-          //Hangle error
+          //Handle error
         }
 
+        /// Como la initial data es [] podemos usar asignar directamente
         final List<Actor> cast = snapshot.data!;
 
         if(cast.isEmpty) {
           return SizedBox(
             width: double.infinity,
             height: cardHeight,
-            child: Center(child: CircularProgressIndicator()),
+            child: const Center(child: CircularProgressIndicator()),
           );
         }
 
@@ -47,7 +53,7 @@ class CastingCards extends StatelessWidget {
 
               return Padding(
                 padding: const EdgeInsets.only(right: _cardGap),
-                child: ActorCard(actor: actor)
+                child: _ActorCard(actor: actor)
               );
             }
           ),
@@ -57,10 +63,11 @@ class CastingCards extends StatelessWidget {
   }
 }
 
-class ActorCard extends StatelessWidget {
+/// No puede reutilizarse el MoviePoster porque este tiene el Hero
+class _ActorCard extends StatelessWidget {
   final Actor actor;
 
-  ActorCard({required this.actor});
+  const _ActorCard({Key? key, required this.actor}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -72,7 +79,7 @@ class ActorCard extends StatelessWidget {
           Flexible(
             flex: 8,
             child: FadeInImage(
-              placeholder: AssetImage('assets/no-image.jpg'),
+              placeholder: const AssetImage('assets/no-image.jpg'),
               image: NetworkImage(actor.fullProfilePath),
               width: double.infinity,
               fit: BoxFit.cover,

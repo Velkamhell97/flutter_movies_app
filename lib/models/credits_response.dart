@@ -1,4 +1,4 @@
-import 'package:peliculas_app/models/models.dart';
+import '../models/models.dart';
 
 class CreditResponse {
   final int id;

@@ -1,8 +1,5 @@
-export 'package:peliculas_app/models/now_playing_response.dart';
-export 'package:peliculas_app/models/popular_response.dart';
+export 'package:peliculas_app/models/movies_response.dart';
 export 'package:peliculas_app/models/credits_response.dart';
-export 'package:peliculas_app/models/search_movie_response.dart';
-export 'package:peliculas_app/models/top_ranked_response.dart';
 export 'package:peliculas_app/models/movie.dart';
 export 'package:peliculas_app/models/actor.dart';
 export 'package:peliculas_app/models/debouncer.dart';

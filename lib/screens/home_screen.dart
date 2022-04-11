@@ -7,6 +7,7 @@ import '../widgets/widgets.dart';
 import '../models/models.dart';
 
 class HomeScreen extends StatelessWidget {
+  const HomeScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,23 +19,23 @@ class HomeScreen extends StatelessWidget {
       // AppBar
       //------------------------
       appBar: AppBar(
-        title: Text('Peliculas en cine'),
+        title: const Text('Peliculas en cine'),
         elevation: 0,
         actions: [
-          Selector<MovieProvier, bool>(
+          Selector<MovieProvider, bool>(
             selector: (_, model) => model.darkMode,
             builder: (_, darkMode, __) => IconButton(
-              onPressed: () => context.read<MovieProvier>().darkMode = !darkMode, 
-              icon: darkMode ? Icon(Icons.light_mode) : Icon(Icons.dark_mode)
+              onPressed: () => context.read<MovieProvider>().darkMode = !darkMode, 
+              icon: darkMode ? const Icon(Icons.light_mode) : const Icon(Icons.dark_mode)
             ),
           ),
 
           IconButton(
             onPressed: () => showSearch(
               context: context, 
-              delegate: MovieSearchDelegate(context.read<MovieProvier>())
+              delegate: MovieSearchDelegate(context.read<MovieProvider>())
             ), 
-            icon: Icon(Icons.search_outlined)
+            icon: const Icon(Icons.search_outlined)
           )
         ],
       ),
@@ -48,30 +49,30 @@ class HomeScreen extends StatelessWidget {
         child: Column( 
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Selector<MovieProvier, MoviesState>(
+            Selector<MovieProvider, MoviesState>(
               selector: (_, model) => model.onDisplayMovies,
               builder: (x_, recentsState, __) => CardSwiper(moviesState: recentsState),
             ),
 
-            _Categoria('Populares'),
+            const _Categoria('Populares'),
 
-            Selector<MovieProvier, MoviesState>(
+            Selector<MovieProvider, MoviesState>(
               selector: (_, model) => model.popularMovies,
               builder: (_, popularsState, __) => MovieSlider(
                 moviesState: popularsState, 
-                onNextPage: () => context.read<MovieProvier>().getPopularMovies(), 
-                label: 'populares' //-Para los hero id
+                onNextPage: () => context.read<MovieProvider>().getPopularMovies(), 
+                onErrorTap: () => context.read<MovieProvider>().getPopularMovies(),
               ),
             ),
 
-            _Categoria('Destacadas'),
+            const _Categoria('Destacadas'),
 
-            Selector<MovieProvier, MoviesState>(
+            Selector<MovieProvider, MoviesState>(
               selector: (_, model) => model.topRankedMovies,
               builder: (_, rankedsState, __) => MovieSlider(
                 moviesState: rankedsState, 
-                onNextPage: () => context.read<MovieProvier>().getTopRnakedMovies(), 
-                label: 'destacadas'
+                onNextPage: () => context.read<MovieProvider>().getTopRnakedMovies(), 
+                onErrorTap: () => context.read<MovieProvider>().getPopularMovies(),
               ),
             ),
           ],
@@ -91,7 +92,7 @@ class _Categoria extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 5, horizontal: 8),
+      padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 8),
       child: Text(nombre, textAlign: TextAlign.start, style: _style),
     );
   }

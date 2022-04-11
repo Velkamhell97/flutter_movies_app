@@ -4,6 +4,8 @@ import '../models/models.dart';
 import '../widgets/widgets.dart';
 
 class DetailScreen extends StatelessWidget {
+  const DetailScreen({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     final Movie movie = ModalRoute.of(context)?.settings.arguments as Movie;
@@ -32,7 +34,7 @@ class DetailScreen extends StatelessWidget {
 class _CustomAppBar extends StatelessWidget {
   final Movie movie;
 
-  _CustomAppBar({required this.movie});
+  const _CustomAppBar({required this.movie});
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +48,7 @@ class _CustomAppBar extends StatelessWidget {
         centerTitle: true,
         title: Text(movie.title, textAlign: TextAlign.center),
         background: FadeInImage(
-          placeholder: AssetImage('assets/loading.gif'),
+          placeholder: const AssetImage('assets/loading.gif'),
           image: NetworkImage(movie.fullBackdropPath),
           fit: BoxFit.cover,
         ),
@@ -58,7 +60,7 @@ class _CustomAppBar extends StatelessWidget {
 class _PosterAndTitle extends StatelessWidget {
   final Movie movie;
 
-  _PosterAndTitle({required this.movie});
+  const _PosterAndTitle({required this.movie});
 
   @override
   Widget build(BuildContext context) {
@@ -67,7 +69,7 @@ class _PosterAndTitle extends StatelessWidget {
     final textStyle = Theme.of(context).textTheme;
 
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 10),
+      padding: const EdgeInsets.symmetric(horizontal: 10),
       child: Row(
         children: [
           Hero(
@@ -75,7 +77,7 @@ class _PosterAndTitle extends StatelessWidget {
             child: ClipRRect(
               borderRadius: BorderRadius.circular(10),
               child: FadeInImage(
-                placeholder: AssetImage('assets/no-image.jpg'),
+                placeholder: const AssetImage('assets/no-image.jpg'),
                 image: NetworkImage(movie.fullPoserImg),
                 height: size.height * 0.24,
                 width: size.width * 0.32,
@@ -83,7 +85,7 @@ class _PosterAndTitle extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(width: 10),
+          const SizedBox(width: 10),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -101,8 +103,8 @@ class _PosterAndTitle extends StatelessWidget {
                 ),
                 Row(
                   children: [
-                    Icon(Icons.star_outline),
-                    SizedBox(width: 5),
+                    const Icon(Icons.star_outline),
+                    const SizedBox(width: 5),
                     Text(movie.voteAverage.toString(), style: textStyle.caption)
                   ],
                 )
@@ -118,14 +120,14 @@ class _PosterAndTitle extends StatelessWidget {
 class _OverView extends StatelessWidget {
   final Movie movie;
 
-  _OverView({required this.movie});
+  const _OverView({required this.movie});
 
   @override
   Widget build(BuildContext context) {
     final textStyle = Theme.of(context).textTheme;
 
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
       child: Text(
         movie.overview,
         textAlign: TextAlign.justify,

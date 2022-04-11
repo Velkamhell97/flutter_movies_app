@@ -4,7 +4,8 @@ import '../models/models.dart';
 import '../providers/movie_provider.dart';
 
 class MovieSearchDelegate extends SearchDelegate {
-  final MovieProvier _movieProvier;
+  /// Se pasa la referencia del provider, para no repetir tanto el context.of
+  final MovieProvider _movieProvier;
 
   MovieSearchDelegate(this._movieProvier);
 
@@ -12,14 +13,14 @@ class MovieSearchDelegate extends SearchDelegate {
   String? get searchFieldLabel => 'Buscar Pelicula...';
 
   String _last = '...';
-  final _debouncer = Debouncer(duration: Duration(seconds: 3));
+  final _debouncer = Debouncer(duration: const Duration(seconds: 3));
 
   @override
   List<Widget> buildActions(BuildContext context) {
     return [
       IconButton(
         onPressed: () => query = '', 
-        icon: Icon(Icons.clear)
+        icon: const Icon(Icons.clear)
       )
     ];
   }
@@ -30,22 +31,23 @@ class MovieSearchDelegate extends SearchDelegate {
       onPressed: (){
         close(context, null);
       }, 
-      icon: Icon(Icons.arrow_back)
+      icon: const Icon(Icons.arrow_back)
     );
   }
 
   @override
   Widget buildResults(BuildContext context) {
-    return Text('Build Result');
+    return const Text('Build Result');
   }
 
   @override
   Widget buildSuggestions(BuildContext context) {
     if(query.length < 3){
       _debouncer.cancel();
-      return Center(child: Icon(Icons.movie, size: 100));
+      return const Center(child: Icon(Icons.movie, size: 100));
     }
 
+    /// Se verifica que el query no se hay utilizado anteiriormente
     if(_movieProvier.queryCache[query] != null){
       final movies =_movieProvier.queryCache[query]!;
       return _MoviesList(movies: movies);
@@ -71,7 +73,7 @@ class MovieSearchDelegate extends SearchDelegate {
       stream: _movieProvier.suggestionStream,
       builder: (BuildContext context, AsyncSnapshot<List<Movie>?> snapshot) {
         if(snapshot.data == null){
-          return Center(child: CircularProgressIndicator());
+          return const Center(child: CircularProgressIndicator());
         } 
 
         if(snapshot.hasError){
@@ -80,7 +82,7 @@ class MovieSearchDelegate extends SearchDelegate {
 
         final List<Movie> movies = snapshot.data!;
 
-        if(movies.isEmpty) return _NoResults();
+        if(movies.isEmpty) return const _NoResults();
 
         return _MoviesList(movies: movies);
       },
@@ -108,7 +110,7 @@ class _MoviesList extends StatelessWidget {
 class _MovieItem extends StatelessWidget {
   final Movie movie;
 
-  _MovieItem({required this.movie});
+  const _MovieItem({required this.movie});
 
   @override
   Widget build(BuildContext context) {
@@ -116,12 +118,12 @@ class _MovieItem extends StatelessWidget {
       leading: Hero(
         tag: movie.heroId,
         child: ConstrainedBox(
-          constraints: BoxConstraints(
+          constraints: const BoxConstraints(
             maxWidth: 50,
             minHeight: 40
           ),
           child: FadeInImage(
-            placeholder: AssetImage('assets/no-image.jpg'),
+            placeholder: const AssetImage('assets/no-image.jpg'),
             image: NetworkImage(movie.fullPoserImg),
             fit: BoxFit.cover,
             width: double.infinity,
@@ -144,8 +146,8 @@ class _NoResults extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(Icons.movie_creation_outlined, color: Colors.black38, size: 80),
-          SizedBox(height: 10),
+          const Icon(Icons.movie_creation_outlined, color: Colors.black38, size: 80),
+          const SizedBox(height: 10),
           Text('Sin resultados', style: Theme.of(context).textTheme.headline5)
         ],
       ),

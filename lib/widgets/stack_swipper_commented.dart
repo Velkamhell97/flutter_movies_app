@@ -17,7 +17,7 @@ class StackSwipperCommented extends StatefulWidget {
   final SwiperDirection swiperDirection; //Direction of swiper elements
   final Function(int index)? onTap;
 
-  StackSwipperCommented({
+  const StackSwipperCommented({
     Key? key,
     required this.itemBuilder,
     required this.itemCount,

@@ -1,16 +1,42 @@
-# peliculas_app
+# Movies App
 
-A new Flutter project.
+Movie app where you can see the movies that are on the billboard and other categories such as the popular movies of the moment or the best ranked. When a movie is selected, you navigate to the details where you can find the synopsis and the casting. Finally the app implements a search delegate to search for a movie by its name.
 
-## Getting Started
+Includes:
 
-This project is a starting point for a Flutter application.
+* Light Mode And Dark Mode
+* Custom Swipe Stack Viewer
+* Provider State Management with equitable and good practices for handle loading, error, data and reload events
+* Shimmer Loading Image (skeleton)
+* Search Delegate With Debouncer
 
-A few resources to get you started if this is your first Flutter project:
+Demo: 
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+<table>
+<thead>
+	<tr>
+		<th>Demo 1</th>
+		<th>Demo 2</th>
+	</tr>
+</thead>
+<tbody>
+	<tr>
+		<td><img src="https://res.cloudinary.com/dwzr9lray/image/upload/v1649648168/flutter_repos/Movies%20App/movies_app_1.gif"></td>
+		<td><img src="https://res.cloudinary.com/dwzr9lray/image/upload/v1649647976/flutter_repos/Movies%20App/movies_app_2.gif"></td>
+	</tr>
+</tbody>
+</table>
+<table>
+<thead>
+	<tr>
+		<th>Demo 3</th>
+		<th>Empty</th>
+	</tr>
+</thead>
+<tbody>
+	<tr>
+		<td><img src="https://res.cloudinary.com/dwzr9lray/image/upload/v1649647976/flutter_repos/Movies%20App/movies_app_3.gif"></td>
+		<td><img src="https://res.cloudinary.com/dwzr9lray/image/upload/v1649648477/flutter_repos/transparent.png"></td>
+	</tr>
+</tbody>
+</table>

@@ -17,7 +17,7 @@ class StackSwipper extends StatefulWidget {
   final SwiperDirection swiperDirection; //Direction of swiper elements
   final Function(int index)? onTap; //onTap function
 
-  StackSwipper({
+  const StackSwipper({
     Key? key,
     required this.itemBuilder,
     required this.itemCount,

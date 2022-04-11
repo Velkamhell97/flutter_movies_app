@@ -1,24 +1,24 @@
-import 'package:peliculas_app/models/models.dart';
+import '../models/models.dart';
 
-class NowPlayingResponse {
-  final Dates dates;
+class MoviesResponse {
+  final Dates? dates;
   final int page;
   final List<Movie> results;
   final int totalPages;
   final int totalResults;
 
-  const NowPlayingResponse({
-    required this.dates,
+  const MoviesResponse({
+    this.dates,
     required this.page,
     required this.results,
     required this.totalPages,
     required this.totalResults,
   });
 
-  factory NowPlayingResponse.fromJson(Map<String, dynamic> json) => NowPlayingResponse(
-    dates        : Dates.fromMap(json["dates"]),
+  factory MoviesResponse.fromJson(Map<String, dynamic> json, String category) => MoviesResponse(
+    dates        : json["dates"] == null ? null : Dates.fromMap(json["dates"]),
     page         : json["page"],
-    results      : List<Movie>.from(json["results"].map((x) => Movie.fromJson(x, 'now_playing'))),
+    results      : List<Movie>.from(json["results"].map((x) => Movie.fromJson(x, category))),
     totalPages   : json["total_pages"],
     totalResults : json["total_results"],
   );
