@@ -5,6 +5,7 @@ Movie app where you can see the movies that are on the billboard and other categ
 Includes:
 
 * Light Mode And Dark Mode
+* Splash Screen and App Icon
 * Custom Swipe Stack Viewer
 * Provider State Management with equitable and good practices for handle loading, error, data and reload events
 * Shimmer Loading Image (skeleton)
@@ -21,7 +22,7 @@ Demo:
 </thead>
 <tbody>
 	<tr>
-		<td><img src="https://res.cloudinary.com/dwzr9lray/image/upload/v1649648168/flutter_repos/Movies%20App/movies_app_1.gif"></td>
+		<td><img src="https://res.cloudinary.com/dwzr9lray/image/upload/v1649738718/flutter_repos/Movies%20App/movies_app_1.gif"></td>
 		<td><img src="https://res.cloudinary.com/dwzr9lray/image/upload/v1649647976/flutter_repos/Movies%20App/movies_app_2.gif"></td>
 	</tr>
 </tbody>
@@ -40,3 +41,6 @@ Demo:
 	</tr>
 </tbody>
 </table>
+
+
+
