@@ -7,7 +7,7 @@ Includes:
 * Light Mode And Dark Mode
 * Splash Screen and App Icon
 * Custom Swipe Stack Viewer
-* Provider State Management with equitable and good practices for handle loading, error, data and reload events
+* Provider State Management with equitable, dependency Inyection and good practices
 * Shimmer Loading Image (skeleton)
 * Search Delegate With Debouncer
 
@@ -41,6 +41,3 @@ Demo:
 	</tr>
 </tbody>
 </table>
-
-
-
