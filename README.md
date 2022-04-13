@@ -18,7 +18,7 @@ Demo:
 	<tr>
 		<th>Demo 1</th>
 		<th>Demo 2</th>
-		<th>Demo 2</th>
+		<th>Demo 3</th>
 	</tr>
 </thead>
 <tbody>
