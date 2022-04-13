@@ -1,10 +1,11 @@
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 import '../models/models.dart';
 
 class MoviedbService {
-  static const _apiKey = 'f16776151abea9d2874e39255731fc60';
+  final _apiKey = dotenv.env['MOVIEDB_API_KEY']!;
   static const _urlBase = 'api.themoviedb.org';
   static const _language = 'es-ES';
 

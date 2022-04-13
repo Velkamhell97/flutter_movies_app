@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:provider/provider.dart';
 
 import 'services/moviedb_service.dart';
 import 'providers/movie_provider.dart';
 import 'screens/screens.dart';
  
-void main() {
-
-  timeDilation = 1.0;
-
+void main() async {
+  await dotenv.load();
   runApp(const AppState());
 }
 
