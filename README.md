@@ -18,26 +18,14 @@ Demo:
 	<tr>
 		<th>Demo 1</th>
 		<th>Demo 2</th>
+		<th>Demo 2</th>
 	</tr>
 </thead>
 <tbody>
 	<tr>
 		<td><img src="https://res.cloudinary.com/dwzr9lray/image/upload/v1649738718/flutter_repos/Movies%20App/movies_app_1.gif"></td>
 		<td><img src="https://res.cloudinary.com/dwzr9lray/image/upload/v1649647976/flutter_repos/Movies%20App/movies_app_2.gif"></td>
-	</tr>
-</tbody>
-</table>
-<table>
-<thead>
-	<tr>
-		<th>Demo 3</th>
-		<th>Empty</th>
-	</tr>
-</thead>
-<tbody>
-	<tr>
 		<td><img src="https://res.cloudinary.com/dwzr9lray/image/upload/v1649647976/flutter_repos/Movies%20App/movies_app_3.gif"></td>
-		<td><img src="https://res.cloudinary.com/dwzr9lray/image/upload/v1649648477/flutter_repos/transparent.png"></td>
 	</tr>
 </tbody>
 </table>
